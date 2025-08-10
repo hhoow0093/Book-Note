@@ -1,0 +1,23 @@
+{
+  "name": "08.-booknote",
+  "version": "1.0.0",
+  "description": "This is a captstone project for storing notes as a reminder in general. if the user wants to see notes from they can use this platform for seeing all the things they wrote or keep in mind",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npx tailwindcss -i ./src/input.css -o ./public/css/style.css --watch\" \"nodemon server.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}

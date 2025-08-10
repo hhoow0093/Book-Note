@@ -1,0 +1,60 @@
+<%- include("./template/header.ejs") %>
+<link rel="stylesheet" href="/css/index.css" />
+<body class="bg-[#FEEED5]">
+  <div class="header min-w-full flex justify-between p-4">
+    <div class="logo hidden md:block">
+      <img src="/asset/SVG/Icon.svg" alt="booknote" />
+    </div>
+    <div class="searchbar flex items-center w-full md:w-auto">
+      <form
+        action=""
+        method="post"
+        class="m-0 p-0 flex gap-1 w-full md:h-[44px]"
+      >
+        <input
+          type="text"
+          name="topics"
+          id="topics"
+          class="flex-grow md:w-[331px] border-[1.5px] border-black border-solid bg-transparent outline-none focus:outline-none placeholder-black p-2 opacity-30 topic-search"
+          placeholder="Enter any topics..."
+        />
+        <button
+          type="submit"
+          class="bg-[#F6732F] p-2 flex-shrink-0 hover:bg-[#ba5620] transition-colors duration-[400ms]"
+        >
+          <img src="/asset/SVG/search.svg" alt="serach-icon" />
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="lists grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 min-h-[70vh] gap-x-1 gap-y-5 p-5 m-5 md:gap-y-[100px] lg:gap-y-5 h-auto">
+    <% for(var i = 0; i < 13; i++) {%>
+    <div class="list-card h-auto lg:h-[338px] xl:h-[288px] w-full max-w-[640px]">
+      <h2 class="card-title font-bold text-[32px]">Finance</h2>
+      <p class="card-explain text-[20px]">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+        corrupti minus exercitationem quis est sunt consectetur sapiente
+        officiis nobis suscipit. Odit incidunt magnam dicta a?
+      </p>
+      <button class="bg-[#F6732F] text-white w-full text-[32px] my-2 hover:bg-[#ba5620] duration-300">Check</button>
+      <div class="read-button-card container flex justify-around p-2">
+        <button class="button-delete text-[#F6732F] flex gap-1 text-[20px] hover:bg-[#c0b4a02d] hover:rounded-md duration-300 p-1"> <span><img src="/asset/SVG/trash-fill.svg" alt="delete-icon"></span>Delete</button>
+        <button class="button-edit text-[#F6732F] flex gap-1 text-[20px] hover:bg-[#c0b4a02d] hover:rounded-md duration-300 p-1" ><span><img src="/asset/SVG/pen-fill.svg" alt="edit-icon"></span>edit</button>
+      </div>
+    </div>
+    <% } %>
+    
+  </div>
+  <div class="container-pagination flex justify-end mx-5 px-5">
+    <div class="pagination flex gap-2 ">
+      <div class="previous text-[15px] text-[#F6732F] page-items hover:bg-[#c0b4a02d] hover:rounded-md duration-300 cursor-pointer "> < Prev</div>
+      <div class="first-item text-[20px] text-[#F6732F] page-items" id="first-item">0</div>
+      <div class="second-item text-[20px] text-white bg-[#F6732F] page-items" id="second-item">1</div>
+      <div class="third-item text-[20px] text-[#F6732F] page-items" id="third-item">2</div>
+      <div class="next text-[15px] text-[#F6732F] page-items hover:bg-[#c0b4a02d] hover:rounded-md duration-300 cursor-pointer">Next ></div>
+    </div>
+  </div>
+</body>
+<script type="module" src="/js/style.js"></script>
+<%- include("./template/footer.ejs") %>
