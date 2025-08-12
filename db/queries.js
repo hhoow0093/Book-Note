@@ -27,3 +27,6 @@ export const getThemes = async () => {
 const editThemes = 1;
 const deleThemes = 2;
 
+// 1. impletement live search, delete and edit button in themes
+// 2. add check button feature to check each notes from themes
+

@@ -20,3 +20,6 @@ INSERT INTO themes (title, description) VALUES
 ('Fantasy', 'Stories set in magical worlds with mythical creatures.'),
 ('Science Fiction', 'Futuristic tales involving advanced technology or space travel.'),
 ('Historical', 'Stories set in the past, inspired by real events or eras.');
+
+ALTER TABLE themes
+ALTER COLUMN description TYPE VARCHAR(186);

@@ -1,6 +1,21 @@
 <%- include("./template/header.ejs") %>
 <link rel="stylesheet" href="/css/index.css" />
-<body class="bg-[#FEEED5]">
+<body class="bg-[#FEEED5] relative p-0 m-0">
+  <!-- ini modal edit-->
+  <div class="container-for-modal fixed inset-0 bg-[#00000080] z-10 flex justify-center items-center">
+    <div class="modal w-screen h-screen lg:w-[996px] lg:h-auto bg-[#F6732F] border-[3px] border-[#A83A00] p-3">
+      <div class="box flex flex-col flex-grow gap-10">
+      <input type="text" name="modal-title" id="modal-title" class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[92px] text-[48px] text-white">
+      <textarea name="modal-desc" id="modal-desc" class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[65vh] lg:h-[280px] text-[36px] text-white">hi</textarea>
+      </div>
+      <div class="char-count text-white gap-0 text-right p-3">0/193</div>
+            <div class="state-buttons w-full flex justify-end gap-5 flex-col lg:flex-row">
+        <button class="close text-white border-[3px] border-[#fff] border-solid px-5 py-1 w-full lg:w-1/6 h-[68px] text-[30px] hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms]">Close</button>
+        <button class="save text-white border-[3px] border-[#fff] border-solid px-5 py-1 w-full lg:w-1/6 h-[68px] text-[30px] hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms] ">Save</button>
+      </div>  
+    </div>
+  </div>
+
   <div class="header min-w-full flex justify-between p-4">
     <div class="logo hidden md:block">
       <img src="/asset/SVG/Icon.svg" alt="booknote" />
