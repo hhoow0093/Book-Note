@@ -29,13 +29,11 @@
   </div>
 
   <div class="lists grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 min-h-[70vh] gap-x-1 gap-y-5 p-5 m-5 md:gap-y-[100px] lg:gap-y-5 h-auto">
-    <% for(var i = 0; i < 13; i++) {%>
+    <% list_theme.forEach((theme) => {%>
     <div class="list-card h-auto lg:h-[338px] xl:h-[288px] w-full max-w-[640px]">
-      <h2 class="card-title font-bold text-[32px]">Finance</h2>
-      <p class="card-explain text-[20px]">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-        corrupti minus exercitationem quis est sunt consectetur sapiente
-        officiis nobis suscipit. Odit incidunt magnam dicta a?
+      <h2 class="card-title font-bold text-[32px]"><%= theme.title %></h2>
+      <p class="card-explain text-[20px] min-h-[120px]">
+        <%= theme.description %>
       </p>
       <button class="bg-[#F6732F] text-white w-full text-[32px] my-2 hover:bg-[#ba5620] duration-300">Check</button>
       <div class="read-button-card container flex justify-around p-2">
@@ -43,7 +41,7 @@
         <button class="button-edit text-[#F6732F] flex gap-1 text-[20px] hover:bg-[#c0b4a02d] hover:rounded-md duration-300 p-1" ><span><img src="/asset/SVG/pen-fill.svg" alt="edit-icon"></span>edit</button>
       </div>
     </div>
-    <% } %>
+    <% }) %>
     
   </div>
   <div class="container-pagination flex justify-end mx-5 px-5">
