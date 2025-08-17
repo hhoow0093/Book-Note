@@ -24,8 +24,59 @@ export const getThemes = async () => {
     }
 }
 
-const editThemes = 1;
-const deleThemes = 2;
+export const getSelectedThemes = async (id) => {
+    try {
+        const res = await db.query("SELECT * FROM themes WHERE id = $1", [id]);
+        const response = res.rows;
+        return response;
+    } catch (error) {
+        return error.message;
+    }
+}
+
+export const editThemes = async (MyId, MyTitle, MyDescription) => {
+    try {
+        const res = await db.query("UPDATE themes SET title = $1, description = $2 WHERE id = $3", [MyTitle, MyDescription, MyId]);
+        // affected rows
+        if (res.rowCount > 0) {
+            return res.rowCount;
+        } else {
+            return "Id does not exist";
+        }
+    } catch (error) {
+        return error.message;
+    }
+    
+};
+
+export const deleteThemes = async (id) => {
+    try {
+        const res = await db.query("DELETE FROM themes WHERE id = $1", [id])
+        if (res.rowCount > 0) {
+            return res.rowCount;
+        } else {
+            return "Id does not exist"
+        }
+        
+    } catch (error) {
+        return error.message;
+    }
+}
+
+export const createTheme = async (title, description) => {
+    try {
+        const res = await db.query("INSERT INTO themes (title, description) VALUES($1, $2)", [title, description]);
+        if (res.rowCount > 0) {
+            return res.rowCount;
+        } else {
+            return "create error";
+        }
+
+    } catch (error) {
+        return error.message;
+    }
+    
+};
 
 // 1. impletement live search, delete and edit button in themes
 // 2. add check button feature to check each notes from themes

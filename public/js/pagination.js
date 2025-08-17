@@ -14,7 +14,7 @@ const totalPages = Math.ceil((list_card.length) / cardPerPage);
 let currentPage = 1;
 
 
-const ShowPage = (page) => {
+window.ShowPage = (page) => {
     if (page < 1) {
         currentPage = 1;
     }
@@ -34,7 +34,7 @@ const ShowPage = (page) => {
     })
 }
 
-const UpdatePagination = () => {
+window.UpdatePagination = () => {
     const prevPage = currentPage - 1;
     const nextPage = currentPage + 1;
 
@@ -67,3 +67,5 @@ document.addEventListener("DOMContentLoaded", () => {
     ShowPage(currentPage);
     UpdatePagination();
 });
+
+

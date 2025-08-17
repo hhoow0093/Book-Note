@@ -2,28 +2,88 @@
 <link rel="stylesheet" href="/css/index.css" />
 <body class="bg-[#FEEED5] relative p-0 m-0">
   <!-- ini modal edit-->
-  <div class="container-for-modal fixed inset-0 bg-[#00000080] z-10 flex justify-center items-center">
-    <div class="modal w-screen h-screen lg:w-[996px] lg:h-auto bg-[#F6732F] border-[3px] border-[#A83A00] p-3">
-      <div class="box flex flex-col flex-grow gap-10">
-      <input type="text" name="modal-title" id="modal-title" class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[92px] text-[48px] text-white">
-      <textarea name="modal-desc" id="modal-desc" class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[65vh] lg:h-[280px] text-[36px] text-white">hi</textarea>
-      </div>
-      <div class="char-count text-white gap-0 text-right p-3">0/193</div>
+   <% if (typeof(theme) !== "undefined"){ %>
+    <form action="/save-edit/<%= theme.id %>" method="post">
+      <div class="container-for-modal fixed inset-0 bg-[#00000080] z-10 flex justify-center items-center">
+        <div class="modal w-screen h-screen lg:w-[996px] lg:h-auto bg-[#F6732F] border-[3px] border-[#A83A00] p-3 overflow-scroll">
+          <div class="box flex flex-col flex-grow ">
+          <input type="text" name="modalTitle" id="modal-title" class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[92px] text-[48px] text-white" value="<%= theme.title %>">
+          <div class="char-count-2 text-white gap-0 text-right p-3">0/20</div>
+          <textarea name="modalDesc" id="modal-desc" class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[65vh] lg:h-[280px] text-[36px] text-white"><%= theme.description %></textarea>
+          </div>
+          <div class="char-count text-white gap-0 text-right p-3">0/186</div>
             <div class="state-buttons w-full flex justify-end gap-5 flex-col lg:flex-row">
-        <button class="close text-white border-[3px] border-[#fff] border-solid px-5 py-1 w-full lg:w-1/6 h-[68px] text-[30px] hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms]">Close</button>
-        <button class="save text-white border-[3px] border-[#fff] border-solid px-5 py-1 w-full lg:w-1/6 h-[68px] text-[30px] hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms] ">Save</button>
-      </div>  
+            <a href="/" class=" w-full lg:w-1/6"><button type="button" class="close text-white border-[3px] border-[#fff] border-solid px-5 py-1 w-full h-[68px] text-[30px] hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms]">Close</button></a>
+            <button class="save text-white border-[3px] border-[#fff] border-solid px-5 py-1 w-full lg:w-1/6 h-[68px] text-[30px] hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms] " type="submit">Save</button>
+          </div>  
+        </div>
+      </div>
+    </form>
+  <% } %>
+
+  <!--ini modal delete-->
+  <% if (typeof(mydelete) !== "undefined"){ %>
+    <div class="container-for-delete-modal fixed inset-0 bg-[#00000080] z-10 flex justify-center items-center">
+      <div class="delete-modal h-1/2 w-screen lg:w-[688px] lg:-[384px] bg-[#F6732F] border-[3px] border-[#A83A00] p-3 flex justify-center items-center flex-col gap-10 ">
+        <div class="message text-white text-[30px]">
+          Are you sure
+        </div>
+        <div class="my-buttons flex gap-5 text-[15px] flex-col lg:flex-row">
+          <a href="/"><div class="no border-[3px] border-[#fff] border-solid px-5 py-1 text-white w-[215px] h-[55px] text-center flex items-center justify-center hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms]">
+              NO
+          </div></a>
+          <form action="/delete/<%= mydelete %>" method="post">
+            <button type="submit" class="yes border-[3px] border-[#fff] border-solid px-5 py-1 text-white w-[215px] h-[55px] text-center flex items-center justify-center hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms]">
+              YES
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
+  <% } %>
+
+  <!-- ini modal error -->
+  <% if (typeof(emptyform) !== "undefined"){ %>
+    <div class="container-for-delete-modal fixed inset-0 bg-[#00000080] z-10 flex justify-center items-center">
+      <div class="delete-modal h-1/2 w-screen lg:w-[688px] lg:-[384px] bg-[#F6732F] border-[3px] border-[#A83A00] p-3 flex justify-center items-center flex-col gap-10 ">
+        <div class="message text-white text-[30px]">
+          <%= emptyform %>
+        </div>
+        <div class="my-buttons flex gap-5 text-[15px] flex-col lg:flex-row">
+          <form action="/" method="get">
+            <button type="submit" class="yes border-[3px] border-[#fff] border-solid px-5 py-1 text-white w-[215px] h-[55px] text-center flex items-center justify-center hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms]">
+              Close
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+  <!-- ini modal create themes-->
+    <form action="/create-themes" method="post" class="create-theme-modal hidden">
+      <div class="container-for-modal fixed inset-0 bg-[#00000080] z-10 flex justify-center items-center">
+        <div class="modal w-screen h-screen lg:w-[996px] lg:h-auto bg-[#F6732F] border-[3px] border-[#A83A00] p-3 overflow-scroll">
+          <div class="box flex flex-col flex-grow ">
+          <input type="text" name="modalTitle" id="modal-title" class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[92px] text-[48px] text-white" >
+          <div class="char-count-2 text-white gap-0 text-right p-3">0/20</div>
+          <textarea name="modalDesc" id="modal-desc" class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[65vh] lg:h-[280px] text-[36px] text-white"></textarea>
+          </div>
+          <div class="char-count text-white gap-0 text-right p-3">0/186</div>
+            <div class="state-buttons w-full flex justify-end gap-5 flex-col lg:flex-row">
+            <a href="/" class=" w-full lg:w-1/6"><button type="button" class="close text-white border-[3px] border-[#fff] border-solid px-5 py-1 w-full h-[68px] text-[30px] hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms]">Close</button></a>
+            <button class="save text-white border-[3px] border-[#fff] border-solid px-5 py-1 w-full lg:w-1/6 h-[68px] text-[30px] hover:text-[#F6732F] hover:bg-[#fff] transition-colors duration-[400ms] " type="submit">Create</button>
+          </div>  
+        </div>
+      </div>
+    </form>
 
   <div class="header min-w-full flex justify-between p-4">
     <div class="logo hidden md:block">
       <img src="/asset/SVG/Icon.svg" alt="booknote" />
     </div>
     <div class="searchbar flex items-center w-full md:w-auto">
-      <form
-        action=""
-        method="post"
+      <div
         class="m-0 p-0 flex gap-1 w-full md:h-[44px]"
       >
         <input
@@ -35,11 +95,11 @@
         />
         <button
           type="submit"
-          class="bg-[#F6732F] p-2 flex-shrink-0 hover:bg-[#ba5620] transition-colors duration-[400ms]"
+          class="my-add-theme-button bg-[#F6732F] p-2 flex-shrink-0 hover:bg-[#ba5620] transition-colors duration-[400ms]"
         >
-          <img src="/asset/SVG/search.svg" alt="serach-icon" />
+          <img src="/asset/SVG/add-theme.svg" alt="serach-icon" />
         </button>
-      </form>
+      </div>
     </div>
   </div>
 
@@ -52,8 +112,14 @@
       </p>
       <button class="bg-[#F6732F] text-white w-full text-[32px] my-2 hover:bg-[#ba5620] duration-300">Check</button>
       <div class="read-button-card container flex justify-around p-2">
-        <button class="button-delete text-[#F6732F] flex gap-1 text-[20px] hover:bg-[#c0b4a02d] hover:rounded-md duration-300 p-1"> <span><img src="/asset/SVG/trash-fill.svg" alt="delete-icon"></span>Delete</button>
-        <button class="button-edit text-[#F6732F] flex gap-1 text-[20px] hover:bg-[#c0b4a02d] hover:rounded-md duration-300 p-1" ><span><img src="/asset/SVG/pen-fill.svg" alt="edit-icon"></span>edit</button>
+        <form action="/edit" method="post">
+          <input type="hidden" name="id" value="<%= theme.id %>">
+           <button type="submit" class="button-edit text-[#F6732F] flex gap-1 text-[20px] hover:bg-[#c0b4a02d] hover:rounded-md duration-300 p-1" ><span><img src="/asset/SVG/pen-fill.svg" alt="edit-icon"></span>edit</button>
+        </form>
+        <form action="/delete" method="post">
+          <input type="hidden" name="id" value="<%= theme.id %>">
+           <button type="submit" class="button-delete text-[#F6732F] flex gap-1 text-[20px] hover:bg-[#c0b4a02d] hover:rounded-md duration-300 p-1"> <span><img src="/asset/SVG/trash-fill.svg" alt="delete-icon"></span>Delete</button>
+        </form>
       </div>
     </div>
     <% }) %>
@@ -69,5 +135,8 @@
     </div>
   </div>
 </body>
-<script type="module" src="/js/style.js"></script>
+<script type="module" src="/js/pagination.js"></script>
+<script type="module" src="/js/char-count.js"></script>
+<script type="module" src="/js/create-theme.js"></script>
+<script type="module" src="/js/live-search.js"></script>
 <%- include("./template/footer.ejs") %>
