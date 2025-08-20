@@ -2,7 +2,7 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
-import { getThemes, getSelectedThemes, editThemes, deleteThemes, createTheme } from "./db/queries.js";
+import { getThemes, getSelectedThemes, editThemes, deleteThemes, createTheme, getStories } from "./db/queries.js";
 import { isString } from "./functions/function.js";
 
 
@@ -89,6 +89,16 @@ app.post("/create-themes", async (req, res) => {
   res.render("index", {
     title: "BookNote", list_theme: themes
   })
+});
+
+app.get("/checkDashBoard", async (req, res) => {
+  const theme_id = req.query.id;
+  const stories_list = await getStories(theme_id);
+  res.render("check_dashboard", {
+    id: theme_id,
+    title: "DashBoard",
+    story_list : stories_list
+  });
 });
 
 

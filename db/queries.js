@@ -22,7 +22,7 @@ export const getThemes = async () => {
     } catch (error) {
         return error.message;
     }
-}
+};
 
 export const getSelectedThemes = async (id) => {
     try {
@@ -32,7 +32,7 @@ export const getSelectedThemes = async (id) => {
     } catch (error) {
         return error.message;
     }
-}
+};
 
 export const editThemes = async (MyId, MyTitle, MyDescription) => {
     try {
@@ -61,7 +61,7 @@ export const deleteThemes = async (id) => {
     } catch (error) {
         return error.message;
     }
-}
+};
 
 export const createTheme = async (title, description) => {
     try {
@@ -77,6 +77,16 @@ export const createTheme = async (title, description) => {
     }
     
 };
+
+export const getStories = async (theme_id) => {
+    try {
+        const res = await db.query("SELECT * FROM STORIES WHERE theme_id = $1", [theme_id])
+        const response = res.rows;
+        return response
+    } catch (error) {
+        return error.message;
+    }
+}; 
 
 // 1. impletement live search, delete and edit button in themes
 // 2. add check button feature to check each notes from themes

@@ -1,0 +1,113 @@
+<%- include("./template/header.ejs") %>
+<link rel="stylesheet" href="/css/index.css" />
+<body class="bg-[#FEEED5] relative p-0 m-0">
+  <div class="header-dashboard w-screen py-4 px-5 flex justify-between">
+    <div class="titleThemeandBackButton gap-5 items-center hidden lg:flex">
+      <a href="/">
+        <div
+          class="justify-center items-center button flex lg:w-[100px] lg:h-[100px] bg-[#F6732F] hover:bg-[#ba5620] duration-300"
+        >
+          <img
+            src="/asset/SVG/arrow-left.svg"
+            alt="left-arrow"
+            srcset=""
+            class="hidden lg:block lg:h-[80px] lg:w-[80px]"
+          />
+        </div>
+      </a>
+      <div class="title font-bold text-[48px]">Homework</div>
+    </div>
+    
+    <div class="searchbar flex items-center w-full lg:w-auto">
+      <div class="m-0 p-0 flex gap-1 w-full md:h-[44px]">
+        <a href="/" class="flex-shrink-0">
+          <button
+            type="submit"
+            class="back-button block lg:hidden bg-[#F6732F] p-2 flex-shrink-0 hover:bg-[#ba5620] transition-colors duration-[400ms]"
+          >
+            <img
+              src="/asset/SVG/arrow-left.svg"
+              class="w-[30px] h-[30px]"
+              alt="serach-icon"
+            />
+          </button>
+        </a>
+        <input
+          type="text"
+          name="topics"
+          id="topics"
+          class="flex-grow md:w-[331px] border-[1.5px] border-black border-solid bg-transparent outline-none focus:outline-none placeholder-black p-2 opacity-30 topic-search"
+          placeholder="Enter any topics..."
+        />
+        <button
+          type="submit"
+          class="add-new-story bg-[#F6732F] p-2 flex-shrink-0 hover:bg-[#ba5620] transition-colors duration-[400ms]"
+        >
+          <img src="/asset/SVG/add-theme.svg" alt="serach-icon" />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="container-pagination flex justify-end mx-5 px-5">
+    <div class="pagination flex gap-2">
+      <div
+        class="previous text-[15px] text-[#F6732F] page-items hover:bg-[#c0b4a02d] hover:rounded-md duration-300 cursor-pointer"
+      >
+        < Prev
+      </div>
+      <div
+        class="first-item text-[20px] text-[#F6732F] page-items"
+        id="first-item"
+      >
+        0
+      </div>
+      <div
+        class="second-item text-[20px] text-white bg-[#F6732F] page-items"
+        id="second-item"
+      >
+        1
+      </div>
+      <div
+        class="third-item text-[20px] text-[#F6732F] page-items"
+        id="third-item"
+      >
+        2
+      </div>
+      <div
+        class="next text-[15px] text-[#F6732F] page-items hover:bg-[#c0b4a02d] hover:rounded-md duration-300 cursor-pointer"
+      >
+        Next >
+      </div>
+    </div>
+  </div>
+    <div class="table-section">
+    <div class="table-container w-screen flex justify-center px-4 py-5">
+        <div class="overflow-x-auto w-full ">
+        <table class="table-fixed w-full border-collapse">
+            <thead class="bg-[#ba5620] h-[95px]">
+            <tr>
+                <th class="text-white font-bold text-[40px] border-[3px] border-[#541e00] w-[279px]">Title</th>
+                <th class="text-white font-bold text-[40px] border-[3px] border-[#541e00] w-[279px]">Date</th>
+                <th class="text-white font-bold text-[40px] border-[3px] border-[#541e00] w-[279px]">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                <% story_list.forEach((story, index) =>{ %>
+                <tr class="story-list bg-[#F6732F] text-white h-[95px]">
+                    <td class="border-[3px] border-[#541e00] px-3"><%= story.title %></td>
+                    <td class="border-[3px] border-[#541e00] px-3"><%= story.created_at.toString().substring(0, 24) %></td>
+                    <td class="border-[3px] border-[#541e00] px-3 text-center">
+                        <button class="border-[3px] border-[#fff]  hover:bg-[#fff] transition-colors duration-[400ms] hover:text-[#F6732F] p-3 w-1/4 min-w-[80px]">read</button>
+                        <button class="border-[3px] border-[#fff]  hover:bg-[#fff] transition-colors duration-[400ms] hover:text-[#F6732F] p-3 w-1/4 min-w-[80px]">delete</button>
+                        <button class="border-[3px] border-[#fff]  hover:bg-[#fff] transition-colors duration-[400ms] hover:text-[#F6732F] p-3 w-1/4 min-w-[80px]">edit</button>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+</body>
+<script type="module" src="/js/pagination-dashboard.js"></script>
+<%- include("./template/footer.ejs") %>

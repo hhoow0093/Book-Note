@@ -23,3 +23,12 @@ INSERT INTO themes (title, description) VALUES
 
 ALTER TABLE themes
 ALTER COLUMN description TYPE VARCHAR(186);
+
+INSERT INTO stories (title, description, theme_id, created_at) VALUES
+('First Love', 'A story about two childhood friends who discover their feelings under the cherry blossoms.', 2, NOW()),
+('Love Letters', 'A romantic tale told through handwritten letters exchanged across continents.', 2, NOW()),
+('Eternal Promise', 'Two lovers vow to meet at the same place every year, no matter what life brings.', 2, NOW()),
+('Unexpected Encounter', 'A chance meeting in a bookstore sparks a whirlwind romance neither expected.', 2, NOW()),
+('Secret Admirer', 'A shy student expresses affection through anonymous notes, leading to a heartfelt revelation.', 2, NOW()),
+('Forever Yours', 'A couple navigates trials and distance but always finds their way back to each other.', 2, NOW()),
+('Moonlight Serenade', 'Under the night sky, music becomes the bridge between two beating hearts.', 2, NOW());
