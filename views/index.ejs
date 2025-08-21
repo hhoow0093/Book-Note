@@ -105,7 +105,7 @@
   <% } %>
 
   <!-- ini modal create themes-->
-  <form action="/create-themes" method="post" class="create-theme-modal hidden">
+  <form action="/create-themes" method="post" class="create-theme-modal hidden" autocomplete="off">
     <div
       class="container-for-modal fixed inset-0 bg-[#00000080] z-10 flex justify-center items-center"
     >
@@ -117,13 +117,15 @@
             type="text"
             name="modalTitle"
             id="modal-title"
-            class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[92px] text-[48px] text-white"
+            placeholder="enter title theme"
+            class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[92px] text-[48px] text-white placeholder-white"
           />
           <div class="char-count-2 text-white gap-0 text-right p-3">0/20</div>
           <textarea
             name="modalDesc"
             id="modal-desc"
-            class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[65vh] lg:h-[280px] text-[36px] text-white"
+            class="bg-transparent outline-none border-[#fff] border-solid border-[3px] h-[65vh] lg:h-[280px] text-[36px] text-white placeholder-white"
+            placeholder="enter description"
           ></textarea>
         </div>
         <div class="char-count text-white gap-0 text-right p-3">0/186</div>

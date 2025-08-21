@@ -1,5 +1,6 @@
 import { Client } from "pg";
 import dotenv from "dotenv";
+import { response } from "express";
 
 dotenv.config()
 
@@ -87,6 +88,16 @@ export const getStories = async (theme_id) => {
         return error.message;
     }
 }; 
+
+export const getTitle = async (theme_id) => {
+    try {
+        const res = await db.query("SELECT * from themes WHERE id = $1", [theme_id]);
+        const response = res.rows;
+        return response[0];
+    } catch (error) {
+        return error.message;
+    }
+}
 
 // 1. impletement live search, delete and edit button in themes
 // 2. add check button feature to check each notes from themes
