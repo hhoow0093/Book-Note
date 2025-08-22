@@ -1,6 +1,7 @@
 import { Client } from "pg";
 import dotenv from "dotenv";
 import { response } from "express";
+import { getSystemErrorMap } from "util";
 
 dotenv.config()
 
@@ -99,6 +100,54 @@ export const getTitle = async (theme_id) => {
     }
 }
 
-// 1. impletement live search, delete and edit button in themes
-// 2. add check button feature to check each notes from themes
+export const createStory = async (title, dateTime, theme_id) => {
+    try {
+        const res = await db.query("INSERT INTO stories (title, theme_id, created_at) VALUES ($1, $2, $3)", [title, theme_id, dateTime]);
+        if (res.rowCount > 0) {
+            return res.rowCount;
+        } else {
+            return "createStory error";
+        }
+    } catch (error) {
+        return error.message;
+  }
+};
+
+export const getStory = async (id) => {
+    try {
+        const res = await db.query("SELECT * FROM stories WHERE id = $1", [id]);
+        const response = res.rows;
+        return response[0];
+    } catch (error) {
+        return error.message;
+    }
+}
+
+export const updateStory = async (id, title, time) => {
+    try {
+        const res = await db.query("UPDATE stories SET title = $1, created_at = $2 WHERE id = $3", [title, time, id]);
+        if (res.rowCount > 0) {
+            return res.rowCount;
+        } else {
+            return "id was not found";
+        }
+        
+    } catch (error) {
+        return error.message;
+    }
+};
+
+export const deleteStory = async (id) => {
+    try {
+        const res = await db.query("DELETE FROM stories WHERE id = $1", [id]);
+        if (res.rowCount > 0) {
+            return res.rowCount;
+        } else {
+            return "id not found";
+        }
+    } catch (error) {
+        return error.message;
+    }
+    
+};
 
