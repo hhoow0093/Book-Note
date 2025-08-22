@@ -274,7 +274,7 @@
                     <td class="border-[3px] border-[#541e00] px-3"><%= story.created_at.toString().substring(0, 24) %></td>
                     <td class="border-[3px] border-[#541e00] px-3 text-center">
                       <div class="special-container flex justify-center gap-2">
-                        <button class="border-[3px] border-[#fff]  hover:bg-[#fff] transition-colors duration-[400ms] hover:text-[#F6732F] p-3 w-1/4 min-w-[80px]">read</button>
+                        <a href="/check-content?id=<%= story.id %>"><button class="border-[3px] border-[#fff]  hover:bg-[#fff] transition-colors duration-[400ms] hover:text-[#F6732F] p-3 w-1/4 min-w-[80px]">read</button></a>
                         <form action="/delete-story" method="post">
                           <input type="hidden" name="id" value="<%= story.id %>">
                           <button class="border-[3px] border-[#fff]  hover:bg-[#fff] transition-colors duration-[400ms] hover:text-[#F6732F] p-3 w-1/4 min-w-[80px]">delete</button>

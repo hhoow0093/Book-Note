@@ -13,7 +13,8 @@ import {
   createStory,
   getStory,
   updateStory,
-  deleteStory
+  deleteStory,
+  getMarkDownText
 } from "./db/queries.js";
 import { isString } from "./functions/function.js";
 import { title } from "process";
@@ -259,7 +260,24 @@ app.post("/delete-story/:id", async (req, res) => {
   }
   
   return res.redirect(`/checkDashBoard?id=${theme_id}`);
-})
+});
+
+app.get("/check-content", async (req, res) => {
+  const id = req.query.id;
+
+  const content = await getMarkDownText(id);
+
+  let markdownContent = "";
+  if (content.description) {
+    markdownContent = content.description;
+  }
+  
+  return res.render("markdown", {
+    title: content.title,
+    markdown: markdownContent
+  })
+
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

@@ -1,7 +1,5 @@
 import { Client } from "pg";
 import dotenv from "dotenv";
-import { response } from "express";
-import { getSystemErrorMap } from "util";
 
 dotenv.config()
 
@@ -149,5 +147,15 @@ export const deleteStory = async (id) => {
         return error.message;
     }
     
+};
+
+export const getMarkDownText = async (id) => {
+    try {
+        const res = await db.query("SELECT description, title FROM stories WHERE id = $1", [id]);
+        const response = res.rows;
+        return response[0];
+    } catch (error) {
+        return error.message;
+    } 
 };
 
