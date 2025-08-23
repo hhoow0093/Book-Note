@@ -90,7 +90,28 @@ since nodemon only includes the server js for rendering, install concurrently by
 
 to run the project, type `npm run dev`. make sure `"type" : "module"` in `package.json` 
 
-## Running the app from github
+## Running the app from locally
 > pre-requisite : install `npm`, `nodejs`, `nodemon`, and `pgadmin` on your system first
+
+```bash
+# cloning the repository
+git clone https://github.com/hhoow0093/Book-Note.git
+
+# installing all dependencies
+npm i
+```
+After installing all the necessary package, fill up `.env.example` database credential from **PGadmin** then rename it to .env
+
+> create database from pgadmin with the name as booknote. import the sql file `booknote.sql` from pgAdmin then execute the query
+
+```
+DB_USERNAME= YourDbUsername
+DB_PASSWORD= YourDbPassword
+DB_PORT= 5432
+DB_NAME= booknote 
+DB_HOST= localhost
+PORT= 3000
+```
+Finally, enter `npm run dev` in terminal to run application.
 
 
