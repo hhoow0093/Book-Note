@@ -102,8 +102,8 @@ npm i
 ```
 After installing all the necessary package, fill up `.env.example` database credential from **PGadmin** then rename it to .env
 
-> create database from pgadmin with the name as booknote. import the sql file `booknote.sql` from pgAdmin then execute the query
-
+> create database from pgadmin with the name as booknote. import the sql file `bookNoteTar.sql` by using the restire option from pg admin and tar data type.
+[![Screenshot-2025-08-23-150635.png](https://i.postimg.cc/3JzQpdTQ/Screenshot-2025-08-23-150635.png)](https://postimg.cc/w75rYxMw)
 ```
 DB_USERNAME= YourDbUsername
 DB_PASSWORD= YourDbPassword
