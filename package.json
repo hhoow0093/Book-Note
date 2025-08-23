@@ -4,7 +4,7 @@
   "description": "This is a captstone project for storing notes as a reminder in general. if the user wants to see notes from they can use this platform for seeing all the things they wrote or keep in mind",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npx tailwindcss -i ./src/input.css -o ./public/css/style.css --watch\" \"nodemon server.js\""
+    "dev": "concurrently \"npx tailwindcss -i ./src/input.css -o ./public/css/style.css --watch\" \"nodemon index.js\""
   },
   "keywords": [],
   "author": "",

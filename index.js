@@ -14,10 +14,10 @@ import {
   getStory,
   updateStory,
   deleteStory,
-  getMarkDownText
+  getMarkDownText,
+  saveMdFile
 } from "./db/queries.js";
 import { isString } from "./functions/function.js";
-import { title } from "process";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -264,6 +264,8 @@ app.post("/delete-story/:id", async (req, res) => {
 
 app.get("/check-content", async (req, res) => {
   const id = req.query.id;
+  const story = await getStory(id);
+  const theme_id = story.theme_id;
 
   const content = await getMarkDownText(id);
 
@@ -274,7 +276,20 @@ app.get("/check-content", async (req, res) => {
   
   return res.render("markdown", {
     title: content.title,
-    markdown: markdownContent
+    markdown: markdownContent,
+    theme_id: theme_id, 
+    id: id
+  })
+
+});
+
+app.post("/save-markdown", async (req, res) => {
+  const { textValue, id } = req.body;
+
+  const saveFile = await saveMdFile(textValue, id);
+
+  res.json({
+    message: saveFile
   })
 
 });

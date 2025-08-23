@@ -2,8 +2,10 @@
 <link rel="stylesheet" href="/css/index.css" />
 <body class="bg-[#FEEED5] relative p-0 m-0">
   <div class="header grid grid-cols-1 lg:grid-cols-2 w-screen pt-4 px-5">
+    <!--input hidden for saving markdown files-->
+    <input type="hidden" name="markdown" id="markdown" value="<%= id %>">
     <div class="titleThemeandBackButton gap-5 items-center hidden lg:flex">
-      <a href="/">
+      <a href="/checkDashboard?id=<%= theme_id %>">
         <div
           class="justify-center items-center button flex lg:w-[100px] lg:h-[100px] bg-[#F6732F] hover:bg-[#ba5620] duration-300"
         >
@@ -21,8 +23,8 @@
       </div>
     </div>
     <div class="button-section flex justify-end flex-col gap-5">
-        <button class="bg-[#F6732F] w-full lg:w-[181px] lg:h-[44px] text-white text-[32px] hover:bg-[#A83A00] transition-colors duration-[400ms]">save</button>
-        <button class="bg-[#F6732F] w-full lg:w-[181px] lg:h-[44px] text-white text-[32px] block lg:hidden hover:bg-[#A83A00] transition-colors duration-[400ms]">back</button>
+        <button class="bg-[#F6732F] w-full lg:w-[181px] lg:h-[44px] text-white text-[32px] hover:bg-[#A83A00] transition-colors duration-[400ms] save-button">save</button>
+        <a href="/checkDashboard?id=<%= theme_id %>" class="p-0 m-0"><button class="bg-[#F6732F] w-full lg:w-[181px] lg:h-[44px] text-white text-[32px] block lg:hidden hover:bg-[#A83A00] transition-colors duration-[400ms]">back</button></a>
     </div>
   </div>
   <div class="content grid grid-cols-1 lg:grid-cols-2 w-screen py-4 px-5 gap-3">
@@ -40,6 +42,7 @@
   </div>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.6/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src="/js/markdown-preview.js"></script>
 </body>
 <%- include("./template/footer.ejs") %>

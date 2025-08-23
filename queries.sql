@@ -13,22 +13,21 @@ CREATE TABLE stories (
 );
 
 INSERT INTO themes (title, description) VALUES
-('Adventure', 'Stories filled with exploration, danger, and excitement.'),
-('Romance', 'Heartwarming tales of love and relationships.'),
-('Mystery', 'Stories involving puzzles, secrets, and investigations.'),
-('Horror', 'Frightening tales designed to scare and thrill the reader.'),
-('Fantasy', 'Stories set in magical worlds with mythical creatures.'),
-('Science Fiction', 'Futuristic tales involving advanced technology or space travel.'),
-('Historical', 'Stories set in the past, inspired by real events or eras.');
+('Intro to DBMS', 'Learned about databases, difference between relational and non-relational, importance of primary keys, and how tables are structured.'),
+('Networking 101', 'Covered OSI model, especially physical, data link, and network layers. IP addressing basics introduced with IPv4 examples.'),
+('C Programming', 'Discussed variables, loops, and functions. Wrote simple programs like calculating factorials and Fibonacci sequence using recursion.'),
+('Web Basics', 'HTML structure explained. Practiced creating forms and links. CSS introduction with inline, internal, and external styles.'),
+('Cybersecurity', 'Explored phishing, malware, and brute force attacks. Learned about password hashing and importance of multi-factor authentication.'),
+('Data Structures', 'Focused on arrays, linked lists, and stacks. Implemented stack push/pop operations in C and discussed their time complexity.');
 
 ALTER TABLE themes
 ALTER COLUMN description TYPE VARCHAR(186);
 
-INSERT INTO stories (title, description, theme_id, created_at) VALUES
-('First Love', 'A story about two childhood friends who discover their feelings under the cherry blossoms.', 2, NOW()),
-('Love Letters', 'A romantic tale told through handwritten letters exchanged across continents.', 2, NOW()),
-('Eternal Promise', 'Two lovers vow to meet at the same place every year, no matter what life brings.', 2, NOW()),
-('Unexpected Encounter', 'A chance meeting in a bookstore sparks a whirlwind romance neither expected.', 2, NOW()),
-('Secret Admirer', 'A shy student expresses affection through anonymous notes, leading to a heartfelt revelation.', 2, NOW()),
-('Forever Yours', 'A couple navigates trials and distance but always finds their way back to each other.', 2, NOW()),
-('Moonlight Serenade', 'Under the night sky, music becomes the bridge between two beating hearts.', 2, NOW());
+INSERT INTO stories (title, created_at, theme_id) VALUES
+('ER Models', '2025-01-15 09:00:00', 17),
+('Relational Keys', '2025-01-16 10:30:00', 17),
+('SQL Basics', '2025-01-17 14:00:00', 17),
+('Joins Practice', '2025-01-18 08:45:00', 17),
+('Normalization', '2025-01-19 13:20:00', 17),
+('Indexes Intro', '2025-01-20 15:10:00', 17),
+('Transactions', '2025-01-21 11:00:00', 17);

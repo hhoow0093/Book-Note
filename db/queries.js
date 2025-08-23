@@ -159,3 +159,16 @@ export const getMarkDownText = async (id) => {
     } 
 };
 
+export const saveMdFile = async (text, id) => {
+    try {
+        const res = await db.query("UPDATE stories SET description = $1 WHERE id = $2", [text, id]);
+        if (res.rowCount > 0) {
+            return "saved successfully!";
+        } else {
+            return "error saving file";
+        }
+    } catch (error) {
+        return error.message;
+    }
+}
+

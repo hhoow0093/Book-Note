@@ -13,17 +13,34 @@ this is an example of setting up the project locally from scratch
 ```
 your-project/
 │
-├── public/               # Static files served by Express
-│   └── css/
-│       └── style.css     # Will contain compiled Tailwind CSS
+├── node_modules/           # all downloaded packages
+|
+├── db/
+|   └── queries.js          # for storing database query function
+|
+|
+├── functions/
+|   └── function.js         # for storing function in index.js
+| 
+|  
+├── public/                 # Static files served by Express
+│   ├─ css/
+│   |    └── style.css      # Will contain compiled Tailwind CSS
+│   ├── js/
+│   |    └── *.js           # for storing web functionalities from frontend
+│   └── asset /             # store any images/svg
+│                  
 ├── src/
-│   └── input.css         # Your Tailwind source file
+│   └── input.css           # Your Tailwind source file
 │
-├── views/                # Your EJS or other templates
+├── views/                  # Your EJS or other templates
+├── .env                    # credentials
+├── .env.example            # credentials example
+├── .gitignore              # making sure not include node modules when updating project
 ├── tailwind.config.js
 ├── postcss.config.js
 ├── package.json
-└── index.js             # Your Express app
+└── index.js                # Your Express app
 ```
 in `src/input.css` add:
 ```
@@ -41,7 +58,10 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")], 
+  // enable tailwind for readme preview make sure  to install
+  // *npm install @tailwindcss/typography* first, 
+  // then add prose class to readme preview container
 };
 
 ```
@@ -64,11 +84,13 @@ since nodemon only includes the server js for rendering, install concurrently by
 
 ```
 "scripts": {
-  "dev": "concurrently \"npx tailwindcss -i ./src/input.css -o ./public/css/style.css --watch\" \"nodemon server.js\""
+  "dev": "concurrently \"npx tailwindcss -i ./src/input.css -o ./public/css/style.css --watch\" \"nodemon index.js\""
 }
 ```
 
 to run the project, type `npm run dev`. make sure `"type" : "module"` in `package.json` 
 
+## Running the app from github
+> pre-requisite : install `npm`, `nodejs`, `nodemon`, and `pgadmin` on your system first
 
 
